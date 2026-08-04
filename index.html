@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5-Stop Daily Pass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- AUTH SCREEN -->
+<div id="authScreen" class="screen">
+  <div class="pass-card auth-card">
+    <div class="pass-header">
+      <span class="eyebrow">Season Pass</span>
+      <h1>🎟️ 5-Stop Daily Pass</h1>
+      <p class="sub">Pick a username and jump straight in — no password needed.</p>
+    </div>
+
+    <form id="enterForm" class="auth-form active">
+      <label>Username
+        <input type="text" id="enterUsername" autocomplete="username" required minlength="3" maxlength="20" placeholder="e.g. sunny_star">
+      </label>
+      <label>Referral code <span class="optional">(only if someone invited you)</span>
+        <input type="text" id="enterReferral" maxlength="10" placeholder="e.g. AB12CD">
+      </label>
+      <button type="submit" class="primary-btn">Enter my pass →</button>
+      <p class="form-msg" id="enterMsg"></p>
+      <p class="hint center">First time typing a username creates your pass. Typing it again later logs you back in.</p>
+    </form>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashScreen" class="screen hidden">
+  <header class="topbar">
+    <div class="who">
+      <span class="eyebrow">Passholder</span>
+      <span class="username" id="displayUsername">—</span>
+    </div>
+    <div class="today">
+      <span class="eyebrow">Today</span>
+      <span class="date-mono" id="displayDate">—</span>
+    </div>
+    <button id="logoutBtn" class="ghost-btn">Log out</button>
+  </header>
+
+  <main class="pass-card dash-card">
+    <div class="season-row">
+      <div class="season-day">
+        <span class="big-num" id="seasonDay">1</span>
+        <span class="unit">/ 30 days</span>
+      </div>
+      <div class="points-total">
+        <span class="big-num gold" id="pointsTotal">0</span>
+        <span class="unit">total points</span>
+      </div>
+    </div>
+
+    <p class="season-status" id="seasonStatus"></p>
+
+    <h2 class="section-label">Punch today's 5 stops — 25 pts each</h2>
+    <div class="stops-grid" id="stopsGrid">
+      <!-- stop cards injected by JS -->
+    </div>
+
+    <div class="referral-panel">
+      <div class="referral-left">
+        <span class="section-label">Your referral code</span>
+        <div class="code-row">
+          <span class="ref-code" id="refCode">——————</span>
+          <button id="copyRefBtn" class="ghost-btn small">Copy</button>
+        </div>
+        <p class="hint">Share this code. When someone signs up with it, you earn <strong>500 points</strong>.</p>
+      </div>
+      <div class="referral-right">
+        <span class="big-num" id="refCount">0</span>
+        <span class="unit">friends referred</span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
